@@ -48,7 +48,7 @@ This plug-ins is fixing as much as it can on the client side, but there are some
 
 When downloading documents in ICN, if you are in the specific case where:
  * You configured the repository to download using the name of the item instead of the file name
-![download-option-item-name](https://github.com/ibm-ecm/icn-custom-mimetypes-plugin/readme/download-option.jpg "Use the name of the item in the repository option")
+![download-option-item-name](https://raw.githubusercontent.com/ibm-ecm/icn-custom-mimetypes-plugin/master/readme/download-option.jpg "Use the name of the item in the repository option")
  * You are not including extensions in the name of the items
 
 Then the ***.dat*** extension will be added to the item's name instead of the original extension.
@@ -56,6 +56,7 @@ Then the ***.dat*** extension will be added to the item's name instead of the or
 ICN usually adds an extension to the item's name based on the MIME Type. The plug-in makes sure the MIME Type is correct in the repository, however the custom mappings are injected on the client side only (because of plug-ins limitations), and ICN won't be able to resolve a custom MIME Type it doesn't know on the server back to the original extension. To work around that, you should either use the option *Use the file name*, or keep the extension in the item's name.
 
 Here is a video demonstrating the issue.
+
 [![entry-template-use](http://img.youtube.com/vi/kFO1fIb0G8c/0.jpg)](https://youtu.be/kFO1fIb0G8c)
 
 ## Issues
