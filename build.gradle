@@ -1,0 +1,74 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '1.0.0'
+group = 'com.ibm.icn'
+
+// Keeping Java 6 for a bit longer, until WAS 9 becomes predominant
+sourceCompatibility = 1.6
+
+// To use local jar, this is not needed if you have your own Nexus server
+// to which you deployed the j2ee, navigator and FileNet jars
+repositories {
+   flatDir {
+       dirs 'lib'
+   }
+}
+
+// Automated version injection
+task generateSources(type: Copy) {
+    from sourceSets.main.java
+    into "$buildDir/generated-src"
+    filter(ReplaceTokens, tokens: [
+        VERSION: "${version} - ${new Date().format('M/d/yyyy')}".toString(),
+        COPYRIGHT: "Copyright 2017 IBM Corporation"
+    ])
+}
+
+compileJava.doFirst {
+    source = "$buildDir/generated-src"
+}
+compileJava.dependsOn generateSources
+
+// Convenient task to gather classes and resources in a single folder
+// to be used in ICN as class file path while developing
+task copyResourcesToClasses(type: Copy, dependsOn: processResources) {
+	from sourceSets.main.output.resourcesDir
+	from sourceSets.main.output.classesDir
+	into "$buildDir/all"
+}
+classes.dependsOn copyResourcesToClasses
+
+
+dependencies {
+	// Use the following lines to use local jars, located in the lib folder
+	compile name: 'j2ee'
+	compile name: 'navigator'
+	
+	// Use the following lines if you have the jars deployed in your Nexus repository
+	// compile 'com.ibm.javax:j2ee:1.4.1'
+	// compile 'com.ibm.icn:navigatorAPI-plugin:2.0.3'
+	
+	compile 'log4j:log4j:1.2.16'
+}
+
+jar {
+	manifest {
+		attributes 'Plugin-Class': "${project.name}.CustomMIMETypePlugin"
+	}
+	
+}
+
+// Distribute a jar without version suffix
+assemble << {
+    copy {
+		from "$buildDir/libs"
+		into "$buildDir/dist"
+		rename { String jarName ->
+			jarName.replace("-$version", '')
+		}
+	}
+}
+

@@ -1,0 +1,22 @@
+<div class="dossierContainer" data-dojo-type="dijit.layout.ContentPane">
+	<table class="propertyTable">
+		<tr>
+            <td class="propertyRowLabel"><label for="mimetypesParam">MIME Types - file extensions mapping</label>
+            <div id="${id}_mimeTypesHoverHelp" data-dojo-attach-point="mimeTypes_levelHoverHelp"
+                    data-dojo-type="ecm/widget/HoverHelp"
+                    data-dojo-props="message: 'Add here you custom MIME Types. You can associated several extensions to one MIME Type by using a comma-separated list of extensions.'"></div>
+            </td>
+			<td class="propertyRowValue">
+				<div id="mimetypesParam"
+					data-dojo-attach-point="mimetypesField"
+					data-dojo-attach-event="onKeyUp: _onParamChange"
+					data-dojo-type="ecm.widget.ValidationTextBox"
+					data-dojo-props="required:'false',lowercase:'true',trim:'true'">
+				</div>
+				<p>Syntax : mimetype1:ext11,ext12,ext13;mimetype2:ext21,ext22,ext23<br/>
+				Example: application/dita+xml:dita;application/ditamap+xml:ditamap
+				</p>
+			</td>
+		</tr>
+	</table>
+</div>
