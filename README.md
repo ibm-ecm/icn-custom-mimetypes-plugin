@@ -107,7 +107,7 @@ gradle assemble
 in the project and you will get the final jar in ***build/dist*** folder.
 
 ### How to directly use classes in ICN
-If you're working on the plug-in, it is easier to use the classes directly in ICN instead of the building deploying the jar every time. Since the Gradle conventions dictate to split sources and resources, the default approach doesn't work. To work around that, we've changed the ***classes*** task of Gradle to compile and gather everything in a single folder under ***build/all***. So all you have to do is configure ICN as follow:
+If you're working on the plug-in, it is easier to use the classes directly in ICN instead of building and deploying the jar every time. Since the Gradle conventions dictate to split sources and resources, the default approach doesn't work. To work around that, we've changed the ***classes*** task of Gradle to compile and gather everything in a single folder under ***build/all***. So all you have to do is configure ICN as follow:
 * Class file path: *$project_path*/build/all
 * Class name: com.ibm.icn.extensions.custommimetype.CustomMIMETypePlugin
 
