@@ -13,10 +13,10 @@ You can refer to the ***Demonstration*** section to get an overview of what it d
 1. Copy the [plug-in's jar](https://github.com/ibm-ecm/icn-custom-mimetypes-plugin/releases) in a location accessible by your ICN instance, or by all instances if you're using a clustered environment, or replicate it to all instances in the same location.
 2. Access the ICN admin desktop, or the admin feature in a any desktop > _Plug-Ins_ and click _New Plug-In_.
 3. Enter the full path of the plug-in's jar and click Load.
-4. Set up the initial configuration to fit best you needs. See the configuration section for more details on all options.
+4. Set up the initial configuration to fit best your needs. See the configuration section for more details on all options.
 
 ### Add the action/feature
-This plug-in does not have any action or feature. It is loaded by all clients (browsers) when connecting to ICN so no extra configuration, outside of the plug-in's configuration panel is required.
+This plug-in does not have any action or feature. It is loaded by all clients (browsers) when connecting to ICN so no extra configuration outside of the plug-in's configuration panel is required.
  
 ### Configuration
 
@@ -85,7 +85,7 @@ Create a ***lib*** folder in the project's folder.
 Copy *j2ee.jar* and *navigator.jar* (renamed from *navigatorAPI.jar*) in the ***lib*** folder of the project and you are done. These jars can be found on any machine with ICN installed under **/opt/IBM/ECMClient/lib** for *navigatorAPI.jar* and **/opt/IBM/WebSphere/AppServer/lib** for *j2ee.jar* (if you're using WebSphere).
 
 #### Use your own private Maven repository if you have one
-If you own your own Maven repository where the two needed jars are needed, just comment the two following lines in build.gradle:
+If you own your own Maven repository where the two needed jars are deployed, just comment the two following lines in build.gradle:
 ```
 compile name: 'j2ee'
 compile name: 'navigator'
