@@ -1,8 +1,8 @@
 # Custom MIME Types plug-in
 
 This plug-in allows the use of custom MIME Types in ICN based on file's extensions. It is especially useful when you want to use custom MIME Types in File Type Filters, that you are then re-using in Entry Templates associations. This plug-in will make ICN correctly resolve MIME Types for files based on their extensions, which will then be resolved to correct File Type Filters, which will lead to correct Entry Template being available in the drop-down list.
-When used, it will also provide the correct MIME Type to the repository at add time, saving you the setup of the repository side (for instance editing mimetpes.properties to add your custom mapping in FileNet P8).
-You can refer to the ***Demonstration*** section to get an overview of what it does.
+When used, it will also provide the correct MIME Type to the repository at add time, saving you the setup on the repository side (for instance editing *mimetpes.properties* to add your custom mapping in FileNet P8).
+You can refer to the [*Demonstration*](https://github.com/ibm-ecm/icn-custom-mimetypes-plugin#demonstration) section to get an overview of what it does.
 
 ## Getting started
 ### Prerequisites
@@ -12,8 +12,8 @@ You can refer to the ***Demonstration*** section to get an overview of what it d
 
 1. Copy the [plug-in's jar](https://github.com/ibm-ecm/icn-custom-mimetypes-plugin/releases) in a location accessible by your ICN instance, or by all instances if you're using a clustered environment, or replicate it to all instances in the same location.
 2. Access the ICN admin desktop, or the admin feature in a any desktop > _Plug-Ins_ and click _New Plug-In_.
-3. Enter the full path of the plug-in's jar and click Load.
-4. Set up the initial configuration to fit best your needs. See the configuration section for more details on all options.
+3. Enter the full path of the plug-in's jar and click *Load*.
+4. Set up the initial configuration to fit best your needs. See the [*configuration*](https://github.com/ibm-ecm/icn-custom-mimetypes-plugin#configuration) section for more details on all options.
 
 ### Add the action/feature
 This plug-in does not have any action or feature. It is loaded by all clients (browsers) when connecting to ICN so no extra configuration outside of the plug-in's configuration panel is required.
@@ -53,7 +53,7 @@ When downloading documents in ICN, if you are in the specific case where:
 
 Then the ***.dat*** extension will be added to the item's name instead of the original extension.
 
-ICN usually adds an extension to the item's name based on the MIME Type. The plug-in makes sure the MIME Type is correct in the repository, however the custom mappings are injected on the client side only (because of plug-ins limitations), and ICN won't be able to resolve a custom MIME Type it doesn't know on the server back to the original extension. To work around that, you should either use the option *Use the file name*, or keep the extension in the item's name.
+ICN usually adds an extension to the item's name based on the MIME Type. The plug-in makes sure the MIME Type is correct in the repository. However, the custom mappings are injected on the client side only (because of plug-in limitations), and ICN won't be able to resolve a custom MIME Type it doesn't know on the server, back to the original extension. To work around that, you should either use the option *Use the file name*, or keep the extension in the item's name.
 
 Here is a video demonstrating the issue.
 
@@ -61,7 +61,7 @@ Here is a video demonstrating the issue.
 
 ## Issues
 
-If you find any issue in the plug-in, please open an Issue in this GitHub repository, we'll be happy to take a look at it as soon as we can. Please remember this is an Open Source project without official support so we can't commit to any deadline.
+If you find any issue in the plug-in, please open an Issue in this GitHub repository, we'll be happy to take a look at it as soon as we can. Please remember that this is an Open Source project without official support so we can't commit to any deadline.
 Feel free to submit a Pull Request yourself if you already fixed it, we'll be happy to accept it to share it with everyone else.
 
 ## Enhancements
@@ -91,7 +91,7 @@ compile name: 'j2ee'
 compile name: 'navigator'
 ```
 
-And uncomment the two following lines. Edit them if you are using different groupId, artifactId or version.
+And uncomment the two following lines. Edit them if you are using different groupIds, artifactIds or versions.
 
 ```
 // compile 'com.ibm.javax:j2ee:1.4.1'
@@ -106,12 +106,12 @@ gradle assemble
 ```
 in the project and you will get the final jar in ***build/dist*** folder.
 
-### How to deploy the classes in ICN
+### How to directly use classes in ICN
 If you're working on the plug-in, it is easier to use the classes directly in ICN instead of the building deploying the jar every time. Since the Gradle conventions dictate to split sources and resources, the default approach doesn't work. To work around that, we've changed the ***classes*** task of Gradle to compile and gather everything in a single folder under ***build/all***. So all you have to do is configure ICN as follow:
 * Class file path: *$project_path*/build/all
 * Class name: com.ibm.icn.extensions.custommimetype.CustomMIMETypePlugin
 
-Then run ```gradle classes``` every time you want to push changes to your ICN instance. Of course you will still have to click the Load button if you changed the Java files, and refresh the page if you change the JavaScript files as you would normally do.
+Then run ```gradle classes``` every time you want to push changes to your ICN instance. Of course, you will still have to click the Load button if you changed the Java files, and refresh the page if you change the JavaScript files as you would normally do.
 
 ### Contribute
 
