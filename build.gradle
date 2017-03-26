@@ -6,6 +6,10 @@ apply plugin: 'eclipse'
 version = '1.0.0'
 group = 'com.ibm.icn'
 
+project.ext {
+	mainPackage = "com.ibm.icn.extensions.custommimetype"
+}
+
 // Keeping Java 6 for a bit longer, until WAS 9 becomes predominant
 sourceCompatibility = 1.6
 
@@ -56,7 +60,7 @@ dependencies {
 
 jar {
 	manifest {
-		attributes 'Plugin-Class': "${project.name}.CustomMIMETypePlugin"
+		attributes 'Plugin-Class': "${project.mainPackage}.CustomMIMETypePlugin"
 	}
 	
 }
